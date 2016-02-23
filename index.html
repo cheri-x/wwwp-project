@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="author" content="Anna Buchnowska">
+  <title>Front-End Developer test</title>
+  <link rel="stylesheet" href="css/main.css"/>
+</head>
+<body onload = "getSeconds()">
+  <div class="container">
+    <!-- top -->
+    <div id="top" class="top">
+      <div class="clearfix">
+        <div class="smartphone">
+          <img alt="smartphone" src="img/smartphone.png">
+        </div>
+        <section>
+          <div class="shadow">
+            <div class="floating-box"><img src="img/inst.png" alt="photo" width="81px" height="81px"></div>
+            <div class="floating-box"><img src="img/photo.png" alt="photo" width="317px" height="53px"></div>
+          </div>
+          <div><h1>ZAWSZE <span>RÓB</span> CUDOWNE <span>ZDJĘCIA</span></h1></div>
+          <p>Lorem Ipsum is simply dummy text of the As been the industry stanvvvdard dummy</p>
+        </section>
+      </div>
+    </div>
+    <!-- end of top -->
+    <!-- ************ -->
+    <!-- shape & countdown under the top -->
+    <div id="u-top">
+      <div id="countdown"></div>
+    </div>
+    <!-- end -->
+    <!--**********-->
+    <!-- main -->
+    <main id="content" class="content">
+      <div>
+        <h2>JAK TO DZIAŁA?</h2>
+      </div>
+      <div class="circle">
+        <div class="circle-area">
+          <div class="floating-box2"><img src="img/icon-1.png" alt="icon-1" width="49" height="41"></div>
+        </div>
+        <div class="circle-area">
+          <div class="floating-box2"><img src="img/icon-2.png" alt="icon-2" width="39" height="61"></div>
+        </div>
+        <div class="circle-area">
+          <div class="floating-box2"><img src="img/icon-3.png" alt="icon-3" width="56" height="39"></div>
+        </div>
+        <div class="circle-area">
+          <div class="floating-box2"><img src="img/icon-4.png" alt="icon-4" width="52" height="53"></div>
+        </div>
+      </div>
+    </main>
+    <div id="u-main">
+        <p>Wróć do góry<a href="#top"><img src="img/arrow.png" alt="arrow" height="9px" width="16px"></a></p>
+    </div>
+    <!-- end main -->
+     <!--**********-->
+    <!-- footer -->
+    <footer>
+      <div class="clearfix">
+        <div class="left-box">
+          <h4 class="left-text">Twitter</h4>
+          <p class="left-text left-p">Jak zrobić timeline na FB? inspirationfeed.com/inspiration/we…</p>
+          <p class="left-text left-p-italic">2 dni temu / Odpowiedz</p>
+          <img src="img/shape2.png" alt="shape2">
+          <p class="left-text left-p">Jak zrobić timeline na FB? inspirationfeed.com/inspiration/we…</p>
+          <p class="left-text left-p-italic">2 dni temu / Odpowiedz</p>
+        </div>
+        <div class="right-box">
+          <h4 class="right-text right-header">O nas</h4>
+          <p class="right-text right-p">Donec sed odio dui. Nulla vitae elit libero, a pharetra augue. Nullam id dolor id nibh ultricies vehicula ut id elit. Integer Donec id elit non mi porta gravida at eget metus</p>
+          <p class="right-text right-p">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum id ligula porta felis euismod semper. Donec ullamcorper nulla non metus auctor fringilla. Nullam quis risus eget urna mollis ornare vel eu leo</p>
+          <p class="right-text right-p">Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum. Vestibulum id ligula porta felis euismod semper. Sed posuere consectetur est at lobortis. Cras mattis consectetur</p>
+        </div>
+      </div>
+    </footer>
+    <!-- end footer -->
+     <!--**********-->
+    <!-- shape under the footer -->
+    <div id="u-footer">
+      <div class="clearfix">
+        <div class="left-box">
+          <p class="left-text p-cond">Copyright &copy; 2013 Grupa o2</p>
+        </div>
+        <div class="right-box">
+          <p class="right-text p-cond">Wszelkie prawa zastrzeżone. Korzystanie z serwisu oznacza akceptację Regulaminu</p>
+        </div>
+      </div>
+    </div>
+    <!-- end -->
+  </div>
+  <!-- end of container -->
+   <!--**********-->
+   <!--**********-->
+  <!--  javascript -->
+  <script type = "text/javascript">
+  function getSeconds() {
+    var now = new Date();
+    var time = now.getTime(); //now
+    var midnight = new Date(now.getFullYear(),now.getMonth(),now.getDate(),0,0,0);
+    var ft = midnight.getTime() + 86400000;
+    var diff = ft - time;
+    diff = parseInt(diff/1000);
+    if (diff > 86400) {
+      diff = diff - 86400;}
+      startTimer (diff);
+    }
+    var timeInSecs;
+    var ticker;
+    function startTimer(secs){
+      timeInSecs = parseInt(secs);
+      ticker = setInterval("tick()",1000);
+      tick();
+    }
+    function tick() {
+      var secs = timeInSecs;
+        if (secs>0) {
+          timeInSecs--;
+        }
+        else {
+          clearInterval(ticker);
+          getSeconds();
+        }
+        var hours= Math.floor(secs/3600);
+        secs %= 3600;
+        var mins = Math.floor(secs/60);
+        secs %= 60;
+        var result = ((hours < 10 ) ? "0" : "" ) + hours + " godz " + ( (mins < 10) ? "0" : "" ) + mins + " min " + ( (secs < 10) ? "0" : "" ) + secs + " s";
+          document.getElementById("countdown").innerHTML = "Do końca pozostało " + result;
+    }
+  </script>
+</body>
+</html>
